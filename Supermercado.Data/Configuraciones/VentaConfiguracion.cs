@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Supermercado.Dominio.Entidades;
+using Supermercado.Domain.Entidades;
 
 namespace Supermercado.Data.Configuraciones
 {
@@ -10,7 +10,6 @@ namespace Supermercado.Data.Configuraciones
         {
             builder.ToTable("Ventas");
             builder.HasKey(v => v.VentaID);
-            builder.HasMany(c => c.Detalles).WithOne(d => d.Venta);
         }
     }
 }

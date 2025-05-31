@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Supermercado.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Supermercado.Domain.Entidades;
 
 namespace Supermercado.Data.Configuraciones
 {
@@ -10,8 +10,6 @@ namespace Supermercado.Data.Configuraciones
         {
             builder.ToTable("DetalleVenta");
             builder.HasKey(dc => new { dc.VentaID, dc.ProductoID });
-            builder.HasOne(dv => dv.Venta).WithMany(p => p.Detalles)
-                   .IsRequired();
             builder.HasOne(dv => dv.Producto)
                 .WithMany()
                 .HasForeignKey(dv => dv.ProductoID)

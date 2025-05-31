@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Supermercado.Dominio.Entidades;
+using Supermercado.Domain.Entidades;
 
 namespace Supermercado.Data
 {
@@ -9,11 +9,6 @@ namespace Supermercado.Data
             : base(options)
         {
         }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(
-        //        @"Server=localhost\MSSQLSERVER01;User Id=JONI\joni_;Password=;Initial Catalog=Supermercado;TrustServerCertificate=True;Integrated Security=True;");
-        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

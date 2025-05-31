@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Supermercado.Dominio\Supermercado.Dominio.csproj" />
+    <ProjectReference Include="..\Supermercado.Domain\Supermercado.Domain.csproj" />
   </ItemGroup>
 
 </Project>

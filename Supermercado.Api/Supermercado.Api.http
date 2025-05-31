@@ -1,6 +1,99 @@
 @Supermercado.Api_HostAddress = http://localhost:5033
+  
+GET {{Supermercado.Api_HostAddress}}/api/productos
+Accept: application/json
 
-GET {{Supermercado.Api_HostAddress}}/weatherforecast/
+###
+
+### Filtrar por nombre
+GET {{Supermercado.Api_HostAddress}}/api/productos/filtro?nombre=secco
+Accept: application/json
+
+###
+
+### Filtrar por stock
+GET {{Supermercado.Api_HostAddress}}/api/productos/filtro?stock=20
+Accept: application/json
+
+###
+
+### Filtrar por precio
+GET {{Supermercado.Api_HostAddress}}/api/productos/filtro?precio=2000
+Accept: application/json
+
+###
+
+### Filtrar por varios parámetros
+GET {{Supermercado.Api_HostAddress}}/api/productos/filtro?nombre=secco&stock=5000&precio=3000
+Accept: application/json
+
+###
+
+
+### Alta (crear un producto)
+POST {{Supermercado.Api_HostAddress}}/api/productos
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombre": "Harina 0000",
+  "descripcion": "marca cholita",
+  "precio": 1000,
+  "stock": 100,
+  "proveedorID": 1
+}
+
+###
+
+### Baja (eliminar un producto por ID)
+DELETE {{Supermercado.Api_HostAddress}}/api/productos/7
+Accept: application/json
+
+###
+
+### Modificacion (actualizar un producto)
+PUT {{Supermercado.Api_HostAddress}}/api/productos
+Content-Type: application/json
+Accept: application/json
+
+{
+  "productoID": 8,
+  "nombre": "Harina integral",
+  "descripcion": "marca cholita",
+  "precio": 1200,
+  "stock": 80,
+  "proveedorID": 1
+}
+
+###
+
+  ### Alta (crear una venta)
+POST {{Supermercado.Api_HostAddress}}/api/ventas
+Content-Type: application/json
+Accept: application/json
+
+{
+  "fecha": "2025-05-31T10:00:00",
+  "clienteID": 1,
+  "total": 1290.50,
+  "detalles": [
+    {
+      "productoID": 2,
+      "cantidad": 3,
+      "precioUnitario": 3.42
+    },
+    {
+      "productoID": 5,
+      "cantidad": 1,
+      "precioUnitario": 40.50
+    }
+  ]
+}
+
+###
+
+### Consultar ventas por cliente y producto
+GET {{Supermercado.Api_HostAddress}}/api/ventas/filtro?clienteId=1&productoId=2
 Accept: application/json
 
 ###

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Supermercado.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Supermercado.Domain.Entidades;
 
 namespace Supermercado.Data.Configuraciones
 {
