@@ -2,10 +2,10 @@
 {
     public class Cliente 
     {
-        public int ClienteID { get; set; }
-        public string Nombre { get; set; } = string.Empty;
-        public string? Direccion { get; set; }
-        public string? Telefono { get; set; }
-        public virtual ICollection<Venta> Ventas { get; set; } = new List<Venta>();
+        public virtual int ClienteID { get; set; }
+        public virtual string Nombre { get; set; } = string.Empty;
+        public virtual string? Direccion { get; set; }
+        public virtual string? Telefono { get; set; }
+        
     }
 }

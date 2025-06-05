@@ -1,6 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NHibernate.Cfg;
+using NHibernate.Cfg.MappingSchema;
+using NHibernate.Dialect;
+using NHibernate.Mapping.ByCode;
 using Supermercado.Data;
 using Supermercado.Data.Repositorios;
+using Supermercado.Data2;
 using Supermercado.Domain.Repositorios.Interfaces;
 
 namespace Supermercado.Api.Infrastructura
@@ -17,6 +22,7 @@ namespace Supermercado.Api.Infrastructura
             // Configuración de los repositorios
             servicios.AddScoped<IProductoRepositorio, ProductoRepositorio>();
             servicios.AddScoped<IVentaRepositorio, VentaRepositorio>();
+
             return servicios;
         }
     }

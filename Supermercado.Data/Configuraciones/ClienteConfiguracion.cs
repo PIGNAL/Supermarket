@@ -10,7 +10,6 @@ namespace Supermercado.Data.Configuraciones
         {
             builder.ToTable("Clientes");
             builder.HasKey(c => c.ClienteID);
-            builder.HasMany(c => c.Ventas).WithOne(c => c.Cliente);
         }
     }
 }

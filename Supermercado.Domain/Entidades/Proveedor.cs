@@ -2,10 +2,10 @@
 {
     public class Proveedor
     {
-        public int ProveedorID { get; set; }
-        public string Nombre { get; set; } = string.Empty;
-        public string? Contacto { get; set; }
-        public string? Direccion { get; set; }
+        public virtual int ProveedorID { get; set; }
+        public virtual string Nombre { get; set; } = string.Empty;
+        public virtual string? Contacto { get; set; }
+        public virtual string? Direccion { get; set; }
         public virtual ICollection<Producto> Productos { get; set; } = new List<Producto>();
         public virtual ICollection<Compra> Compras { get; set; } = new List<Compra>();
     }

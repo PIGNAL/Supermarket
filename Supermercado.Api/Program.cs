@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AgregarServiciosInfrastructura(builder.Configuration);
+//builder.Services.AgregarServiciosInfrastructura(builder.Configuration);
+builder.Services.AddNHibernate(builder.Configuration);
 
 var app = builder.Build();
 

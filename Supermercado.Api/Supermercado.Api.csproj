@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Supermercado.Data2\Supermercado.Data2.csproj" />
     <ProjectReference Include="..\Supermercado.Data\Supermercado.Data.csproj" />
     <ProjectReference Include="..\Supermercado.Domain\Supermercado.Domain.csproj" />
   </ItemGroup>
