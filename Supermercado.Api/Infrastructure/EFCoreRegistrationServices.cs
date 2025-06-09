@@ -13,7 +13,6 @@ namespace Supermarket.Api.Infrastructure
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddScoped<ISaleRepository, SaleRepository>();
 
             return services;
         }

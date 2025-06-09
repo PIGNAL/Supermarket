@@ -14,6 +14,11 @@ namespace Supermarket.Api.Infrastructure.Common
             services.AddScoped<ProductRepository2>();
             services.AddScoped<ProductRepository3>(provider => new ProductRepository3(connectionString));
             services.AddScoped<IProductRepositoryFactory, ProductRepositoryFactory>();
+            services.AddScoped<SaleRepository>();
+            services.AddScoped<SaleRepository2>();
+            services.AddScoped<SaleRepository3>(provider => new SaleRepository3(connectionString));
+            services.AddScoped<ISaleRepositoryFactory, SaleRepositoryFactory>();
+
             return services;
         }
     }

@@ -26,7 +26,6 @@ namespace Supermarket.Api.Infrastructure
 
             services.AddSingleton(sessionFactory);
             services.AddScoped(factory => sessionFactory.OpenSession());
-            services.AddScoped<ISaleRepository, SaleRepository2>();
             return services;
         }
     }

@@ -68,7 +68,7 @@ Accept: application/json
 ###
 
   ### Alta (crear una venta)
-POST {{Supermarket.Api_HostAddress}}/api/ventas
+POST {{Supermarket.Api_HostAddress}}/api/sales
 Content-Type: application/json
 Accept: application/json
 
@@ -98,7 +98,7 @@ Accept: application/json
 ###
 
 ### Consultar ventas por cliente y producto
-GET {{Supermarket.Api_HostAddress}}/api/ventas/filter?clienteId=1&productId=2
+GET {{Supermarket.Api_HostAddress}}/api/sales/filter?clienteId=1&productId=2
 Accept: application/json
 
 ###
