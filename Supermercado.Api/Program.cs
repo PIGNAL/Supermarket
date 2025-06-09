@@ -1,4 +1,5 @@
-using Supermercado.Api.Infrastructura;
+using Supermarket.Api.Infrastructure;
+using Supermarket.Api.Infrastructure.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,8 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-//builder.Services.AgregarServiciosInfrastructura(builder.Configuration);
-builder.Services.AddNHibernate(builder.Configuration);
+builder.Services.AddEFCoreInfrastructureServices(builder.Configuration);
+builder.Services.AddNHibernate(builder.Configuration); 
+builder.Services.AddRepositories(builder.Configuration);
 
 var app = builder.Build();
 

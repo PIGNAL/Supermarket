@@ -1,96 +1,96 @@
-@Supermercado.Api_HostAddress = http://localhost:5033
+@Supermarket.Api_HostAddress = http://localhost:5033
   
-GET {{Supermercado.Api_HostAddress}}/api/productos
+GET {{Supermarket.Api_HostAddress}}/api/products/?ormType=Dapper
 Accept: application/json
 
 ###
 
-### Filtrar por nombre
-GET {{Supermercado.Api_HostAddress}}/api/productos/filtro?nombre=secco
+### Filtrar por name
+GET {{Supermarket.Api_HostAddress}}/api/products/filter?ormType=EfCore?name=secco
 Accept: application/json
 
 ###
 
 ### Filtrar por stock
-GET {{Supermercado.Api_HostAddress}}/api/productos/filtro?stock=20
+GET {{Supermarket.Api_HostAddress}}/api/products/filter?stock=20
 Accept: application/json
 
 ###
 
-### Filtrar por precio
-GET {{Supermercado.Api_HostAddress}}/api/productos/filtro?precio=2000
+### Filtrar por price
+GET {{Supermarket.Api_HostAddress}}/api/products/filter?price=2000
 Accept: application/json
 
 ###
 
 ### Filtrar por varios parámetros
-GET {{Supermercado.Api_HostAddress}}/api/productos/filtro?nombre=secco&stock=5000&precio=2000
+GET {{Supermarket.Api_HostAddress}}/api/products/filter?name=secco&stock=5000&price=2000
 Accept: application/json
 
 ###
 
 
 ### Alta (crear un producto)
-POST {{Supermercado.Api_HostAddress}}/api/productos
+POST {{Supermarket.Api_HostAddress}}/api/products
 Content-Type: application/json
 Accept: application/json
 
 {
-  "nombre": "Harina 000",
-  "descripcion": "marca angelica",
-  "precio": 1000,
-  "stock": 1002,
+  "name": "Coca cola 3l",
+  "description": "marca coca cola",
+  "price": 4000,
+  "stock": 500,
   "proveedorID": 1
 }
 
 ###
 
 ### Baja (eliminar un producto por ID)
-DELETE {{Supermercado.Api_HostAddress}}/api/productos/8
+DELETE {{Supermarket.Api_HostAddress}}/api/products/10
 Accept: application/json
 
 ###
 
 ### Modificacion (actualizar un producto)
-PUT {{Supermercado.Api_HostAddress}}/api/productos
+PUT {{Supermarket.Api_HostAddress}}/api/products
 Content-Type: application/json
 Accept: application/json
 
 {
-  "productoID": 9,
-  "nombre": "Harina integral",
-  "descripcion": "marca cholita",
-  "precio": 1200,
+  "id": 9,
+  "name": "Harina integral bolsa de 10 kilos",
+  "description": "marca cholita",
+  "price": 9000,
   "stock": 80,
-  "proveedorID": 1
+  "supplierId": 1
 }
 
 ###
 
   ### Alta (crear una venta)
-POST {{Supermercado.Api_HostAddress}}/api/ventas
+POST {{Supermarket.Api_HostAddress}}/api/ventas
 Content-Type: application/json
 Accept: application/json
 
 {
   "fecha": "2025-05-31T10:00:00",
-  "clienteID": 1,
+  "clientId": 1,
   "total": 5500.50,
   "detalles": [
     {
-      "productoID": 5,
-      "cantidad": 3,
-      "precioUnitario": 3.42
+      "productId": 5,
+      "quantity": 3,
+      "unitPrice": 3.42
     },
     {
-      "productoID": 9,
-      "cantidad": 1,
-      "precioUnitario": 40.50
+      "productId": 9,
+      "quantity": 1,
+      "unitPrice": 40.50
     },
     {
-      "productoID": 4,
-      "cantidad": 1,
-      "precioUnitario": 40.50
+      "productId": 4,
+      "quantity": 1,
+      "unitPrice": 40.50
     }
   ]
 }
@@ -98,7 +98,7 @@ Accept: application/json
 ###
 
 ### Consultar ventas por cliente y producto
-GET {{Supermercado.Api_HostAddress}}/api/ventas/filtro?clienteId=1&productoId=2
+GET {{Supermarket.Api_HostAddress}}/api/ventas/filter?clienteId=1&productId=2
 Accept: application/json
 
 ###
