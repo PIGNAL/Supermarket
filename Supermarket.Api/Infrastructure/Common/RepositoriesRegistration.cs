@@ -11,12 +11,12 @@ namespace Supermarket.Api.Infrastructure.Common
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddScoped<ProductRepository>();
-            services.AddScoped<ProductRepository2>();
-            services.AddScoped<ProductRepository3>(provider => new ProductRepository3(connectionString));
+            services.AddScoped<ProductRepositoryNhibernate>();
+            services.AddScoped<ProductRepositoryDapper>(provider => new ProductRepositoryDapper(connectionString));
             services.AddScoped<IProductRepositoryFactory, ProductRepositoryFactory>();
             services.AddScoped<SaleRepository>();
-            services.AddScoped<SaleRepository2>();
-            services.AddScoped<SaleRepository3>(provider => new SaleRepository3(connectionString));
+            services.AddScoped<SaleRepositoryNhibernate>();
+            services.AddScoped<SaleRepositoryDapper>(provider => new SaleRepositoryDapper(connectionString));
             services.AddScoped<ISaleRepositoryFactory, SaleRepositoryFactory>();
 
             return services;

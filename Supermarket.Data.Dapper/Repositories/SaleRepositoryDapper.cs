@@ -5,15 +5,15 @@ using Supermarket.Domain.Repositories.Interfaces;
 
 namespace Supermarket.Data.Dapper.Repositories
 {
-    public class SaleRepository3 : ISaleRepository
+    public class SaleRepositoryDapper : ISaleRepository
     {
         private readonly string _connectionString;
-        public SaleRepository3(string connectionString)
+        public SaleRepositoryDapper(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public async Task Add(Sale? sale)
+        public async Task AddAsync(Sale? sale)
         {
             var ventaCommand = @"INSERT INTO Sales (Date, ClientId, Total)
                                  VALUES (@Date, @ClientId, @Total);
@@ -59,7 +59,7 @@ namespace Supermarket.Data.Dapper.Repositories
             }
         }
 
-        public async Task<IEnumerable<Sale>> GetSalesByProductAndClient(int clientId, int productId)
+        public async Task<IEnumerable<Sale>> GetSalesByProductAndClientAsync(int clientId, int productId)
         {
             var salesDict = new Dictionary<int, Sale>();
 

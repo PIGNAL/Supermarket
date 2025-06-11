@@ -5,15 +5,15 @@ using Supermarket.Domain.Repositories.Interfaces;
 
 namespace Supermarket.Data.NHibernate.Repositories
 {
-    public class SaleRepository2 : ISaleRepository
+    public class SaleRepositoryNhibernate : ISaleRepository
     {
         private readonly ISession _session;
-        public SaleRepository2(ISession session)
+        public SaleRepositoryNhibernate(ISession session)
         {
             _session = session;
         }
 
-        public Task Add(Sale? sale)
+        public Task AddAsync(Sale? sale)
         {
 
             if (sale == null)
@@ -23,7 +23,7 @@ namespace Supermarket.Data.NHibernate.Repositories
             return _session.SaveOrUpdateAsync(sale);
         }
 
-        public Task<IEnumerable<Sale>> GetSalesByProductAndClient(int clientId, int productId)
+        public Task<IEnumerable<Sale>> GetSalesByProductAndClientAsync(int clientId, int productId)
         {
             return _session.Query<Sale>()
                 .Fetch(v => v.Client) 

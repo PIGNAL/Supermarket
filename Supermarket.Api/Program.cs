@@ -3,13 +3,14 @@ using Supermarket.Api.Infrastructure.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// AddAsync services to the container.
 
 builder.Services.AddControllers();
 
 builder.Services.AddEFCoreInfrastructureServices(builder.Configuration);
 builder.Services.AddNHibernate(builder.Configuration); 
 builder.Services.AddRepositories(builder.Configuration);
+builder.Services.AddMediatRRegistration();
 
 var app = builder.Build();
 

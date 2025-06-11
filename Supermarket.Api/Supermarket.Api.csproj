@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Supermercado.Data2\Supermarket.Data.NHibernate.csproj" />
-    <ProjectReference Include="..\Supermercado.Data3\Supermarket.Data.Dapper.csproj" />
-    <ProjectReference Include="..\Supermercado.Data\Supermarket.Data.EFCore.csproj" />
-    <ProjectReference Include="..\Supermercado.Domain\Supermarket.Domain.csproj" />
+    <ProjectReference Include="..\Supermarket.Data.Dapper\Supermarket.Data.Dapper.csproj" />
+    <ProjectReference Include="..\Supermarket.Data.NHibernate\Supermarket.Data.NHibernate.csproj" />
+    <ProjectReference Include="..\Supermarket.Data.NHibernate\Supermarket.Data.NHibernate.csproj" />
+    <ProjectReference Include="..\Supermarket.Data.EFCore\Supermarket.Data.EFCore.csproj" />
+    <ProjectReference Include="..\Supermarket.Domain\Supermarket.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.5.0" />
   </ItemGroup>
 
 </Project>

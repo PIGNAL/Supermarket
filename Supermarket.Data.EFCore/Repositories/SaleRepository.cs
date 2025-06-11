@@ -11,7 +11,7 @@ namespace Supermarket.Data.EFCore.Repositories
         {
             _context = context;
         }
-        public Task Add(Sale? sale)
+        public Task AddAsync(Sale? sale)
         {
             if (sale == null)
             {
@@ -21,7 +21,7 @@ namespace Supermarket.Data.EFCore.Repositories
             return _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Sale>> GetSalesByProductAndClient(int clientId, int productId)
+        public Task<IEnumerable<Sale>> GetSalesByProductAndClientAsync(int clientId, int productId)
         {
             return _context.Sales.Where(v => v.ClientId == clientId && v.SaleDetails.FirstOrDefault(dv => dv.ProductId == productId) != null)
                 .Include(v => v.SaleDetails)

@@ -5,11 +5,11 @@ using Supermarket.Domain.Repositories.Interfaces;
 
 namespace Supermarket.Data.Dapper.Repositories
 {
-    public class ProductRepository3 : IProductRepository
+    public class ProductRepositoryDapper : IProductRepository
     {
         private readonly string _connectionString;
 
-        public ProductRepository3(string connectionString)
+        public ProductRepositoryDapper(string connectionString)
         {
             _connectionString = connectionString;
         }

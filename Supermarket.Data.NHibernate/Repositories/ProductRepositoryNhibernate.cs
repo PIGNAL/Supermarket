@@ -5,10 +5,10 @@ using Supermarket.Domain.Repositories.Interfaces;
 
 namespace Supermarket.Data.NHibernate.Repositories
 {
-    public class ProductRepository2 : IProductRepository
+    public class ProductRepositoryNhibernate : IProductRepository
     {
         private readonly ISession _session;
-        public ProductRepository2(ISession session)
+        public ProductRepositoryNhibernate(ISession session)
         {
             _session = session;
         }

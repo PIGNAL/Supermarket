@@ -19,8 +19,8 @@ namespace Supermarket.Api.Factories
             return ormType switch
             {
                 OrmType.EfCore => (ISaleRepository)_serviceProvider.GetService(typeof(SaleRepository)),
-                OrmType.Dapper => (ISaleRepository)_serviceProvider.GetService(typeof(SaleRepository2)),
-                OrmType.NHibernate => (ISaleRepository)_serviceProvider.GetService(typeof(SaleRepository3)),
+                OrmType.Dapper => (ISaleRepository)_serviceProvider.GetService(typeof(SaleRepositoryNhibernate)),
+                OrmType.NHibernate => (ISaleRepository)_serviceProvider.GetService(typeof(SaleRepositoryDapper)),
                 _ => throw new NotImplementedException()
             };
         }

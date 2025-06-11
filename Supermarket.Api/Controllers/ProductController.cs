@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Supermarket.Api.Commands.Requests;
 using Supermarket.Api.Enums;
-using Supermarket.Api.Factories;
+using Supermarket.Api.Queries.Requests;
 using Supermarket.Domain.Entities;
 
 namespace Supermarket.Api.Controllers
@@ -9,19 +11,18 @@ namespace Supermarket.Api.Controllers
     [Route("api/products")]
     public class ProductController : Controller
     {
-        private readonly IProductRepositoryFactory  _repositoryFactory;
-
-        public ProductController(IProductRepositoryFactory repositoryFactory)
+        private readonly IMediator _mediator;
+        public ProductController(IMediator mediator)
         {
-            _repositoryFactory = repositoryFactory;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetAll([FromQuery] OrmType ormType)
+        public async Task<ActionResult<List<Product>>> GetAll([FromQuery] OrmType ormType)
         {
-            var repository = _repositoryFactory.Create(ormType);
-            var products = await repository.GetAllAsync();
-            return Ok(products);
+            var query = new ProductGetQueryRequest(ormType);
+            var results = await _mediator.Send(query);
+            return Ok(results);
         }
 
         /// <summary>
@@ -40,9 +41,9 @@ namespace Supermarket.Api.Controllers
             [FromQuery] int? stock,
             [FromQuery] decimal? price)
         {
-            var repository = _repositoryFactory.Create(ormType);
-            var products = await repository.GetAllByFilterAsync(name, stock, price);
-            return Ok(products);
+            var query = new ProductGetByFilterQueryRequest(ormType, name, stock, price);
+            var results = await _mediator.Send(query);
+            return Ok(results);
         }
 
         [HttpPost]
@@ -52,19 +53,21 @@ namespace Supermarket.Api.Controllers
             {
                 return BadRequest("Product cannot be null.");
             }
-            var repository = _repositoryFactory.Create(ormType);
-            await repository.AddAsync(product);
-            return Ok();
+
+            var command = new ProductCreateCommandRequest(ormType, product);
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
 
-        [HttpDelete("{productId}")]
+        [HttpDelete("{productId:int}")]
         public async Task<ActionResult> Delete([FromQuery] OrmType ormType, int productId)
         {
             try
             {
-                var repository = _repositoryFactory.Create(ormType);
-                await repository.DeleteAsync(productId);
-                return Ok();
+                var command = new ProductDeleteCommandRequest(ormType, productId);
+                var result = await _mediator.Send(command);
+
+                return Ok(result);
             }
             catch (KeyNotFoundException ex)
             {
@@ -79,10 +82,10 @@ namespace Supermarket.Api.Controllers
             {
                 return BadRequest("Product cannot be null.");
             }
-            var repository = _repositoryFactory.Create(ormType);
+            var command = new ProductUpdateCommandRequest(ormType, product);
+            var result = await _mediator.Send(command);
 
-            await repository.UpdateAsync(product);
-            return Ok();
+            return Ok(result);
         }
     }
 }

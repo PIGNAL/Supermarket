@@ -4,8 +4,8 @@ namespace Supermarket.Domain.Repositories.Interfaces;
 
 public interface ISaleRepository
 {
-    Task Add(Sale? sale);
+    Task AddAsync(Sale? sale);
 
-    Task<IEnumerable<Sale>> GetSalesByProductAndClient(int clientId, int productId);
+    Task<IEnumerable<Sale>> GetSalesByProductAndClientAsync(int clientId, int productId);
 }
     
